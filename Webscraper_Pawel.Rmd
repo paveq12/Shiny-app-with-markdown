@@ -1,0 +1,43 @@
+---
+title: "Webscraper"
+author: "Paweł Lewandowski"
+date: "15 grudnia 2016"
+output: html_document
+---
+Dane zostały pobrane ze strony z ofertami pracy www.pracuj.pl. Następnie zostały eksportowane do pliku: "Praca_Webcraper.csv"
+
+
+```{r}
+data <- read.csv(file = "C:/Users/Komputer/Documents/Praca_WebcraperV2.csv")
+```
+Poszczegulne kolumny z danymi.
+
+1 kolumna: Stanowisko
+```{r}
+data[,1,drop=F]
+```
+
+2 kolumna: Firma
+```{r}
+data[,2,drop=F]
+```
+
+3 kolumna: Lokalizacja
+```{r}
+data[,3,drop=F]
+```
+
+4 kolumna: Wynagrodzenie
+```{r}
+data[,4,drop=F]
+```
+Wykres zarobków w poszczególnych miastach
+```{r fig.width=12, fig.height=6}
+library(ggplot2)
+qplot(data=data, x=Lokalizacja, y=Wynagrodzenie, colour=Wynagrodzenie, size=I(4))
+```
+Podsumowanie:
+```{r}
+summary(data)
+```
+
